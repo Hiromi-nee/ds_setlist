@@ -1,0 +1,11 @@
+{
+    "date":"17/09/2015", 
+    "sl_type":"DS",
+    "sl_no":"3",
+    "location":"DearStage",
+    "songs":[
+        {"seq":"1","title":"百八円の恋","artiste":"みみ"},
+        {"seq":"2","title":"エウテルペ","artiste":"わか"},
+        {"seq":"3","title":"星空と月と花火の下","artiste":"れみ"},
+        {"seq":"4","title":"夜風の仕業","artiste":"ゆりね"}
+    ]}

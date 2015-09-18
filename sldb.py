@@ -19,5 +19,5 @@ class Song(BaseModel):
     title = CharField()
     artiste = CharField()
 
-Setlist.create_table()
-Song.create_table()
+#Setlist.create_table()
+#Song.create_table()
