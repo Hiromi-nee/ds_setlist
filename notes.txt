@@ -1,0 +1,5 @@
+db.Setlist.select().where(db.Setlist.uuid == '18092015_1')
+
+db.Song.select().join(db.Setlist).where(db.Setlist.uuid == '18092015_1')
+
+from playhouse.shortcuts import *
