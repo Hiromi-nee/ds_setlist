@@ -1,11 +1,12 @@
 {
     "date":"17/09/2015", 
     "sl_type":"DS",
-    "sl_no":"3",
+    "sl_no":"2",
     "location":"DearStage",
     "songs":[
-        {"seq":"1","title":"百八円の恋","artiste":"みみ"},
-        {"seq":"2","title":"エウテルペ","artiste":"わか"},
-        {"seq":"3","title":"星空と月と花火の下","artiste":"れみ"},
-        {"seq":"4","title":"夜風の仕業","artiste":"ゆりね"}
+        {"seq":"1","title":"オリオンをなぞる","artiste":"珠希"},
+        {"seq":"2","title":"深海戦隊誉レンジャー","artiste":"ほまれ"},
+        {"seq":"3","title":"ほうき星","artiste":"わか"},
+        {"seq":"4","title":"START:DASH!!","artiste":"みみ"},
+        {"seq":"5","title":"オオカミ少女","artiste":"あみな"}
     ]}

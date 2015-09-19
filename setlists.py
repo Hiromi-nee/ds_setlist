@@ -2,15 +2,36 @@ import sldb
 import re
 import falcon
 import json
+from playhouse.shortcuts import *
 
 #return json
 def _get_setlist(uuid):
-    pass
+    try:
+        sngs = sldb.Song.select().join(sldb.Setlist).where(sldb.Setlist.uuid == uuid)
+        sl = sldb.Setlist.select().where(sldb.Setlist.uuid == uuid)[0]
+    except IndexError:
+        raise falcon.HTTPError(falcon.HTTP_753, '{"Error":"No records"}')
+    sl_json = '{"date":"'+sl.date+'","sl_type":"'+sl.sl_type+'","sl_no":"'+str(sl.sl_no)+'","songs":['
+    for s in sngs:
+        sl_json+='{"artiste":"'+s.artiste+'","title":"'+s.title+'","seq":"'+str(s.seq)+'"},'
+    sl_json = sl_json[:-1] #get rid of extra trailling comma
+    sl_json += ']}'
+    return sl_json
+        
+
 
 #return list of json
 def _get_all_setlists(date,sl_type):
-    pass
-    
+    try:
+        sls = sldb.Setlist.select().where(sldb.Setlist.date == date, 
+                                          sldb.Setlist.sl_type==sl_type)
+    except Exception:
+        raise falcon.HTTPError(falcon.HTTP_753, '{"Error":"No records"}')
+    slf = []
+    for sl in sls:
+        slf.append(_get_setlist(sl.uuid))
+
+    return slf
 
 def _gen_uuid(date,sl_no,sl_type):
     date = re.sub("/+","",date)
@@ -60,10 +81,24 @@ class Create(object):
 class Retrieve(object):
     def on_get(self,req,resp,date,sl_type,sl_no):
         f_date = date[:2]+"/"+date[2:4]+"/"+date[4:]
+        rbody = ''
         if sl_no == "0":
-            _get_all_setlists(f_date,sl_type)
+            rbody = ','.join(_get_all_setlists(f_date,sl_type))
         else:
-            _get_setlist(date+"_"+sl_type+"_"+sl_no)
-        resp.body = '{"error":"No method"}'
+            rbody = _get_setlist(date+"_"+sl_type+"_"+sl_no)
+        if rbody == None:
+            rbody = '{"Error":"No Records"}'
+        resp.body = rbody
         resp.status = falcon.HTTP_200
 
+class List(object):
+    def on_get(self,req,resp):
+        a = sldb.Setlist.select()
+        rbody = 'Available Setlists:\n'
+        sls = []
+        for x in a:
+             sls.append(x.uuid)
+        sls.sort()
+        rbody += '\n'.join(sls)
+        resp.body = rbody
+        resp.status = falcon.HTTP_200
