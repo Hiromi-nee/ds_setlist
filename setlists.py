@@ -11,7 +11,7 @@ def _get_setlist(uuid):
         sl = sldb.Setlist.select().where(sldb.Setlist.uuid == uuid)[0]
     except IndexError:
         raise falcon.HTTPError(falcon.HTTP_753, '{"Error":"No records"}')
-    sl_json = '{"date":"'+sl.date+'","sl_type":"'+sl.sl_type+'","event":"'+sl.event+'","sl_no":"'+str(sl.sl_no)+'","songs":['
+    sl_json = '{"date":"'+sl.date+'","sl_type":"'+sl.sl_type+'","event":"'+sl.event+'","sl_no":"'+str(sl.sl_no)+'","sl_size":"'+str(sl.sl_size)+'","songs":['
     for s in sngs:
         sl_json+='{"artiste":"'+s.artiste+'","title":"'+s.title+'","seq":"'+str(s.seq)+'"},'
     sl_json = sl_json[:-1] #get rid of extra trailling comma
@@ -61,6 +61,7 @@ class Create(object):
                                   sl_type=p_json['sl_type'],
                                   sl_no=p_json['sl_no'],
                                   location=p_json['location'],
+                                  sl_size=p_json['sl_size'],
                                   uuid=g_uuid,
                                   event = p_json['event'])
                 sl.save()
@@ -78,7 +79,7 @@ class Create(object):
             status = "Not Saved"
         
         resp.status = falcon.HTTP_202
-        pbody = status+"\n"+p_json['date']+" "+p_json['sl_type']+" "+p_json['event']+" "+p_json['sl_no']+" "+p_json['location']+"\n"
+        pbody = status+"\n"+p_json['date']+" "+p_json['sl_type']+" "+p_json['event']+" "+p_json['sl_no']+" "+p_json['location']+" "+p_json['sl_size']+"\n"
         for x in p_json['songs']:
             pbody += x['seq']+" "+x['artiste']+" "+x['title']+"\n"
         resp.body = pbody
