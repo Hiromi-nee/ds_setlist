@@ -11,7 +11,7 @@ def _get_setlist(uuid):
         sl = sldb.Setlist.select().where(sldb.Setlist.uuid == uuid)[0]
     except IndexError:
         raise falcon.HTTPError(falcon.HTTP_753, '{"Error":"No records"}')
-    sl_json = '{"date":"'+sl.date+'","sl_type":"'+sl.sl_type+'","sl_no":"'+str(sl.sl_no)+'","songs":['
+    sl_json = '{"date":"'+sl.date+'","sl_type":"'+sl.sl_type+'","event":"'+sl.event+'","sl_no":"'+str(sl.sl_no)+'","songs":['
     for s in sngs:
         sl_json+='{"artiste":"'+s.artiste+'","title":"'+s.title+'","seq":"'+str(s.seq)+'"},'
     sl_json = sl_json[:-1] #get rid of extra trailling comma
@@ -50,30 +50,35 @@ class Create(object):
             raise falcon.HTTPError(falcon.HTTP_753, 'Malformed JSON')
         #Save to db
         status = "Not Saved"
+        if p_json['event'] == '':
+            p_json['event'] = "none"
         try:
             g_uuid = _gen_uuid(p_json['date'],
                                p_json['sl_no'],
                                p_json['sl_type'])
-
-            sl = sldb.Setlist(date=p_json['date'],
-                              sl_type=p_json['sl_type'],
-                              sl_no=p_json['sl_no'],
-                              location=p_json['location'],
-                              uuid=g_uuid)
-            sl.save()
-            for x in p_json['songs']:
-                s = sldb.Song(seq=x['seq'],
-                              title=x['title'],
-                              artiste=x['artiste'],
-                              setlist=sl)
-                s.save()
+            if sldb.Setlist.select().where(sldb.Setlist.uuid == g_uuid).exists() != True:
+                sl = sldb.Setlist(date=p_json['date'],
+                                  sl_type=p_json['sl_type'],
+                                  sl_no=p_json['sl_no'],
+                                  location=p_json['location'],
+                                  uuid=g_uuid,
+                                  event = p_json['event'])
+                sl.save()
+                for x in p_json['songs']:
+                    s = sldb.Song(seq=x['seq'],
+                                  title=x['title'],
+                                  artiste=x['artiste'],
+                                  setlist=sl)
+                    s.save()
+                    status = "Saved"
+            else:
+                status = "Record Exists"
         except Exception:
             raise falcon.HTTPError(falcon.HTTP_753, 'DB ERROR')
             status = "Not Saved"
         
         resp.status = falcon.HTTP_202
-        status = "Saved"
-        pbody = status+"\n"+p_json['date']+" "+p_json['sl_type']+" "+p_json['sl_no']+" "+p_json['location']+"\n"
+        pbody = status+"\n"+p_json['date']+" "+p_json['sl_type']+" "+p_json['event']+" "+p_json['sl_no']+" "+p_json['location']+"\n"
         for x in p_json['songs']:
             pbody += x['seq']+" "+x['artiste']+" "+x['title']+"\n"
         resp.body = pbody

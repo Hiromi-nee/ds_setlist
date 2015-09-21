@@ -12,6 +12,7 @@ class Setlist(BaseModel):
     sl_no = IntegerField()
     location = TextField()
     uuid = CharField(unique=True)
+    event = CharField()
 
 class Song(BaseModel):
     setlist = ForeignKeyField(Setlist, related_name="songs")
