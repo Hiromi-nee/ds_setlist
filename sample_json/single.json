@@ -1,9 +1,10 @@
 {
-    "date":"20/09/2015", 
+    "date":"21/09/2015", 
     "sl_type":"DS",
     "sl_no":"301",
-    "event":"None",
+    "sl_size":"1",
+    "event":"夏を着納め",
     "location":"DearStage",
     "songs":[
-        {"seq":"1","title":"Pure","artiste":"わか"}
+        {"seq":"1","title":"エキセントリック・ラヴァー","artiste":"れたす"}
     ]}

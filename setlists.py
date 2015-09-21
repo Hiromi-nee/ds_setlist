@@ -3,6 +3,7 @@ import re
 import falcon
 import json
 from playhouse.shortcuts import *
+import utils
 
 #return json
 def _get_setlist(uuid):
@@ -33,9 +34,9 @@ def _get_all_setlists(date,sl_type):
 
     return slf
 
-def _gen_uuid(date,sl_no,sl_type):
-    date = re.sub("/+","",date)
-    return date+"_"+sl_type+"_"+sl_no
+#def _gen_uuid(date,sl_no,sl_type):
+#    date = re.sub("/+","",date)
+#    return date+"_"+sl_type+"_"+sl_no
 
 class Create(object):
     def on_get(self,req,resp):
@@ -53,7 +54,7 @@ class Create(object):
         if p_json['event'] == '':
             p_json['event'] = "none"
         try:
-            g_uuid = _gen_uuid(p_json['date'],
+            g_uuid = utils._gen_uuid(p_json['date'],
                                p_json['sl_no'],
                                p_json['sl_type'])
             if sldb.Setlist.select().where(sldb.Setlist.uuid == g_uuid).exists() != True:
