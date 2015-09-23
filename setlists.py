@@ -11,7 +11,7 @@ def _get_setlist(uuid):
         sngs = sldb.Song.select().join(sldb.Setlist).where(sldb.Setlist.uuid == uuid)
         sl = sldb.Setlist.select().where(sldb.Setlist.uuid == uuid)[0]
     except IndexError:
-        raise falcon.HTTPError(falcon.HTTP_753, '{"Error":"No records"}')
+        raise falcon.HTTPError(falcon.HTTP_400, '{"Error":"No records"}')
     sl_json = '{"date":"'+sl.date+'","sl_type":"'+sl.sl_type+'","event":"'+sl.event+'","sl_no":"'+str(sl.sl_no)+'","sl_size":"'+str(sl.sl_size)+'","songs":['
     for s in sngs:
         sl_json+='{"artiste":"'+s.artiste+'","title":"'+s.title+'","seq":"'+str(s.seq)+'"},'
@@ -27,7 +27,7 @@ def _get_all_setlists(date,sl_type):
         sls = sldb.Setlist.select().where(sldb.Setlist.date == date, 
                                           sldb.Setlist.sl_type==sl_type)
     except Exception:
-        raise falcon.HTTPError(falcon.HTTP_753, '{"Error":"No records"}')
+        raise falcon.HTTPError(falcon.HTTP_400, '{"Error":"No records"}')
     slf = []
     for sl in sls:
         slf.append(_get_setlist(sl.uuid))
@@ -76,7 +76,7 @@ class Create(object):
             else:
                 status = "Record Exists"
         except Exception:
-            raise falcon.HTTPError(falcon.HTTP_753, 'DB ERROR')
+            raise falcon.HTTPError(falcon.HTTP_400, 'Record Exists')
             status = "Not Saved"
         
         resp.status = falcon.HTTP_202
@@ -105,7 +105,7 @@ class List(object):
         sls = []
         for x in a:
              sls.append(x.uuid)
-        sls.sort()
+        #sls.sort()
         rbody += '\n'.join(sls)
         resp.body = rbody
         resp.status = falcon.HTTP_200
