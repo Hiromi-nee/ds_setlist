@@ -12,8 +12,8 @@ r_setlists = setlists.Retrieve()
 list_setlists = setlists.List()
 
 
-#api.add_route('setlists/{artiste}',artiste_songs)
-#api.add_route('setlists/{sl_type}',type_setlists)
+#api.add_route('/setlists/{artiste}',artiste_songs)
+#api.add_route('/setlists/{sl_type}',type_setlists)
 api.add_route('/setlists/list', list_setlists)
 api.add_route('/setlists/read/{date}/{sl_type}/{sl_no}', r_setlists)
-api.add_route('/setlists/create',c_setlists)
+api.add_route('/setlists/{usrid}/create',c_setlists)

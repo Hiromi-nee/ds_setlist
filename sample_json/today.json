@@ -1,15 +1,14 @@
 {
-    "date":"22/09/2015", 
+    "date":"23/09/2015", 
     "sl_type":"DS",
     "sl_no":"4",
-    "sl_size":"5",
-    "event":"りゅう生誕",
+    "sl_size":"4",
+    "event":"通常",
     "location":"DearStage",
     "songs":[
-        {"seq":"1","title":"2012spark","artiste":"りゅう"},
-        {"seq":"2","title":"みちしるべ","artiste":"りゅう"},
-        {"seq":"3","title":"オリオンをなぞる","artiste":"りゅう"},
-        {"seq":"4","title":"Ruok?","artiste":"りゅう"},
-        {"seq":"5","title":"WOW WAR TONIGHT 〜時には起こせよムーヴメント","artiste":"りゅう"}
+        {"seq":"1","title":"Calc.","artiste":"キャン"},
+        {"seq":"2","title":"夜風の仕業","artiste":"ゆりね"},
+        {"seq":"3","title":"花が散る世界","artiste":"さかな"},
+        {"seq":"4","title":"歌声、そして青い鳥","artiste":"れみ"}
     ]
 }

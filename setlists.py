@@ -43,7 +43,9 @@ class Create(object):
         resp.body = '{"error":"No method"}'
         resp.status = falcon.HTTP_200
 
-    def on_post(self, req, resp):
+    def on_post(self, req, resp,usrid):
+        if usrid != 'hiromi':
+            raise falcon.HTTPError(falcon.HTTP_753, 'No auth')
         temp = req.stream.read()
         try:
             p_json = json.loads(temp)
