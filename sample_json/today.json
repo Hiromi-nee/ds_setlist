@@ -1,15 +1,14 @@
 {
     "date":"24/09/2015", 
     "sl_type":"DS",
-    "sl_no":"2",
-    "sl_size":"5",
+    "sl_no":"3",
+    "sl_size":"4",
     "event":"通常",
     "location":"DearStage",
     "songs":[
-        {"seq":"1","title":"cross wise","artiste":"大和"},
-        {"seq":"2","title":"僕の気になるあの子の新曲は少し残念だった。","artiste":"みみ"},
-        {"seq":"3","title":"恋のメガラバ","artiste":"リカ"},
-        {"seq":"4","title":"お願いダーリン","artiste":"キャン（ダンス）"},
-        {"seq":"5","title":"BREAK IT OUT","artiste":"Gimmick"}
+        {"seq":"1","title":"After glow","artiste":"ちか"},
+        {"seq":"2","title":"幸福論","artiste":"しいな"},
+        {"seq":"3","title":"君の知らない物語","artiste":"リカ"},
+        {"seq":"4","title":"レインストップグッバイ","artiste":"キャン"}
     ]
 }

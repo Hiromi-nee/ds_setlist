@@ -43,6 +43,7 @@ class List(object):
         for x in a:
              sls.append(x.uuid)
              #sls.sort()      
+        rbody = "Available Setlists ("+str(len(sls))+"):\n"
         rbody += '\n'.join(sls)
         resp.body = rbody
         resp.status = falcon.HTTP_200
