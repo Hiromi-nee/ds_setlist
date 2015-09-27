@@ -5,3 +5,5 @@ sldb.Setlist.select().where(sldb.Setlist.date == '17/09/2015', sldb.Setlist.sl_t
 db.Song.select().join(db.Setlist).where(db.Setlist.uuid == '18092015_1')
 
 from playhouse.shortcuts import *
+
+http POST https://ds.nitengo.me/setlists/hiromi/create Content-Type:application/json < /media/Kyou/docs/code/ds_setlist/sample_json/today.json

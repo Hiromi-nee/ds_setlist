@@ -1,14 +1,14 @@
 {
-    "date":"24/09/2015", 
+    "date":"27/09/2015", 
     "sl_type":"DS",
-    "sl_no":"3",
-    "sl_size":"4",
-    "event":"通常",
+    "sl_no":"1",
+    "sl_size":"5",
+    "event":"Flash Fractal LIVE JACK vol.8",
     "location":"DearStage",
     "songs":[
-        {"seq":"1","title":"After glow","artiste":"ちか"},
-        {"seq":"2","title":"幸福論","artiste":"しいな"},
-        {"seq":"3","title":"君の知らない物語","artiste":"リカ"},
-        {"seq":"4","title":"レインストップグッバイ","artiste":"キャン"}
-    ]
-}
+        {"seq":"1","title":"ロストマイミュージック","artiste":"ももせ"},
+        {"seq":"2","title":"ペガサス幻想","artiste":"ほまれ"},
+        {"seq":"3","title":"エターナルブレーズ","artiste":"ノエル"},
+        {"seq":"4","title":"forever...","artiste":"れたす"},
+        {"seq":"5","title":"コネクト","artiste":"ふうり"}
+    ]}

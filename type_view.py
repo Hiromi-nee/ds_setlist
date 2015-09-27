@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sldb
 import re
 import falcon
@@ -6,10 +7,27 @@ from playhouse.shortcuts import *
 import utils
 
 class ArtisteView(object):
-    pass
+    def on_get(self,req,resp,artiste):
+        a = sldb.Song.select(sldb.Song.title).where(sldb.Song.artiste == artiste).distinct()
+        songs = []
+        for sng in a:
+            songs.append(sng.title)
+        rbody = u"持ち曲 ("+str(len(songs))+"):\n"
+        songs.sort()
+        rbody += u'\u000A'.join(songs)
+        resp.body = rbody
+        resp.status=falcon.HTTP_200
 
 class SetlistTypeView(object):
-    pass
+    def on_get(self,req,resp,sl_type):
+        a = sldb.Setlist.select(sldb.Setlist.uuid).where(sldb.Setlist.sl_type == sl_type).distinct()
+        sls = []
+        for sl in a:
+            sls.append(sl.uuid)
+        rbody = sl_type+" Setlists ("+str(len(sls))+"):\n"
+        rbody += '\n'.join(sls)
+        resp.body = rbody
+        resp.status=falcon.HTTP_200
 
 class ListArtiste(object):
     def on_get(self,req,resp):

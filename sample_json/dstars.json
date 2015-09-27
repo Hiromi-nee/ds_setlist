@@ -2,6 +2,8 @@
     "date":"19/09/2015", 
     "sl_type":"DSTARS",
     "sl_no":"1",
+    "sl_size":"",
+    "event":"",
     "location":"DearStage",
     "songs":[
         {"seq":"1","title":"no pain, no shine!","artiste":"ディア☆"},
