@@ -1,14 +1,13 @@
 {
-    "date":"27/09/2015", 
+    "date":"03/10/2015", 
     "sl_type":"DS",
     "sl_no":"1",
-    "sl_size":"5",
-    "event":"Flash Fractal LIVE JACK vol.8",
+    "sl_size":"4",
+    "event":"鈴音生誕&卒業",
     "location":"DearStage",
     "songs":[
-        {"seq":"1","title":"ロストマイミュージック","artiste":"ももせ"},
-        {"seq":"2","title":"ペガサス幻想","artiste":"ほまれ"},
-        {"seq":"3","title":"エターナルブレーズ","artiste":"ノエル"},
-        {"seq":"4","title":"forever...","artiste":"れたす"},
-        {"seq":"5","title":"コネクト","artiste":"ふうり"}
+        {"seq":"1","title":"God knows","artiste":"ノエル"},
+        {"seq":"2","title":"︎最強○×計画","artiste":"珠希"},
+        {"seq":"3","title":"IGNITE","artiste":"ゆにこ"},
+        {"seq":"4","title":"夢であるように","artiste":"大和"}
     ]}
