@@ -1,14 +1,12 @@
 {
-    "date":"19/09/2015", 
+    "date":"12/10/2015", 
     "sl_type":"DSTARS",
     "sl_no":"1",
-    "sl_size":"",
-    "event":"",
-    "location":"DearStage",
+    "sl_size":"3",
+    "event":"iCON DOLL LOUNGE",
+    "location":"ラフォーレミュージアム原宿",
     "songs":[
         {"seq":"1","title":"no pain, no shine!","artiste":"ディア☆"},
         {"seq":"2","title":"Kiss＋kissで終わらない","artiste":"ディア☆"},
-        {"seq":"3","title":"もってけセーラー服","artiste":"ディア☆"},
-        {"seq":"4","title":"Daydream Cafe","artiste":"ディア☆"},
-        {"seq":"5","title":"Star!!","artiste":"ディア☆"}
+        {"seq":"3","title":"no pain, no shine!","artiste":"ディア☆"}
     ]}

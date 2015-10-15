@@ -52,7 +52,19 @@ class ListSLType(object):
         rbody += '\n'.join(sl_types)
         resp.body = rbody
         resp.status = falcon.HTTP_200
-    
+
+class ListSong(object):
+    def on_get(self,req,resp):
+        a = sldb.Song.select(sldb.Song.title).distinct()
+        title = []
+        for sl in a:
+            title.append(sl.title)
+        rbody = "Available Songs ("+str(len(title))+"):\n"
+        title.sort()
+        rbody += '\n'.join(title)
+        resp.body = rbody
+        resp.status = falcon.HTTP_200
+
 class List(object):
     def on_get(self,req,resp):
         a = sldb.Setlist.select()
@@ -60,7 +72,7 @@ class List(object):
         sls = []
         for x in a:
              sls.append(x.uuid)
-             #sls.sort()      
+             #sls.sort()
         rbody = "Available Setlists ("+str(len(sls))+"):\n"
         rbody += '\n'.join(sls)
         resp.body = rbody

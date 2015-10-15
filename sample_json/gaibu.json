@@ -1,0 +1,15 @@
+{
+    "date":"05/10/2015", 
+    "sl_type":"DSGB",
+    "sl_no":"1",
+    "sl_size":"4",
+    "event":"神楽坂TRASH-UP 千影みみソロ",
+    "location":"神楽坂TRASH-UP",
+    "songs":[
+        {"seq":"1","title":"ワンダフルワールド","artiste":"みみ"},
+        {"seq":"2","title":"Daikirai-Daisuki","artiste":"みみ"},
+        {"seq":"3","title":"Fly","artiste":"みみ"},
+        {"seq":"4","title":"僕の気になるあの子の新曲は少し残念だった","artiste":"みみ"}
+
+    ]
+}
